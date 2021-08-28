@@ -1,11 +1,28 @@
 // inquirer questions
-const { default: generateEmptyCoverage } = require('@jest/reporters/build/generateEmptyCoverage');
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 const inquirer = require('inquirer');
-const { choices } = require('yargs');
+
+let employeeData = [];
 
 const promptUser = () => {
     return inquirer.prompt([
-     {
+    
+    {
+        type: 'rawlist',
+        name: 'employees',
+        message: 'Select the new employee position.',
+        choices: ['Engineer', 'Intern', 'Manager'],
+        
+    },
+])
+};
+
+const managerQuestions = () => {
+    return inquirer.prompt([
+    {
         type: 'input',
         name: 'name',
         message: "What is your Team Manager's name?"
@@ -25,19 +42,8 @@ const promptUser = () => {
         name: 'officeNumber',
         message: 'Enter your office number.',
     },
-    {
-        type: 'rawlist',
-        name: 'employees',
-        message: 'Select the new employee position.',
-        choices: ['Engineer', 'Intern', 'Manager'],
-        filter(val) {
-            return val;
-          }
-    },
 ])
-.then
-
-}
+};
 
 
 const engineerQuestions = () => {
@@ -101,8 +107,15 @@ const addEmployee = employeeData => {
 
 
 
-// promptUser()
-// .then(addEmployee)
+promptUser()
+.then(prompts => {
+    console.log(prompts);
+    // const data = new Manager (prompts.name, prompts.id, prompts.email, prompts.office) etc
+})
+
+
+
 // .then(employeeData => {
 //     return generatePage(employeeData);
 // })
+
