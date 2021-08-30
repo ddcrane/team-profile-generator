@@ -9,15 +9,35 @@ let employeeData = [];
 
 const promptUser = () => {
     return inquirer.prompt([
-    
-    {
-        type: 'rawlist',
-        name: 'employees',
-        message: 'Select the new employee position.',
-        choices: ['Engineer', 'Intern', 'Manager'],
-        
-    },
-])
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is your Team Manager's name?"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'Enter your employee ID.',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter your email address.',
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: 'Enter your office number.',
+        },
+        {
+            type: 'rawlist',
+            name: 'type',
+            message: 'Select the new employee position.',
+            choices: ['Engineer', 'Intern', 'Manager'],
+            
+        },
+    ])
+
 };
 
 const managerQuestions = () => {
@@ -110,7 +130,16 @@ const addEmployee = employeeData => {
 promptUser()
 .then(prompts => {
     console.log(prompts);
-    // const data = new Manager (prompts.name, prompts.id, prompts.email, prompts.office) etc
+    
+    if (prompts.type === 'Engineer') {
+        return engineerQuestions();
+    } 
+    if (prompts.type === 'Intern') {
+        return internQuestions();
+    } 
+    if (prompts.type === 'Manager') {
+        return managerQuestions();
+    } 
 })
 
 
