@@ -3,7 +3,7 @@ const Employee = require('./lib/Employee.js');
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
-const inquirer = require('inquirer.js');
+const inquirer = require('inquirer');
 
 let employeeData = [];
 
@@ -40,6 +40,8 @@ const promptUser = () => {
 
 };
 
+
+
 const managerQuestions = () => {
     return inquirer.prompt([
     {
@@ -63,6 +65,8 @@ const managerQuestions = () => {
         message: 'Enter your office number.',
     },
 ])
+
+
 };
 
 
@@ -119,10 +123,6 @@ const internQuestions = () => {
     ])
 };
 
-
-const addEmployee = employeeData => {
-
-}
 
 
 
