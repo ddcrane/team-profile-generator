@@ -1,11 +1,19 @@
-const Employee = require('../lib/Employee.js');
-const Engineer = require('../lib/Engineer.js')
+const Engineer = require("../lib/Engineer");
 
-test('creates an engineer object', () => {
-    const engineer = new Engineer();
-  
-    expect(engineer.name).toEqual(expect.any(String));
-    expect(engineer.id).toEqual(expect.any(Number));
-    expect(engineer.email).toEqual(expect.any(String));
-    expect(engineer.github).toEqual(expect.any(String));
-  });
+test("Can set GitHUb account via constructor", () => {
+  const testValue = "GitHubUser";
+  const e = new Engineer("Foo", 1, "test@test.com", testValue);
+  expect(e.github).toBe(testValue);
+});
+
+test("getRole() should return \"Engineer\"", () => {
+  const testValue = "Engineer";
+  const e = new Engineer("Foo", 1, "test@test.com", "GitHubUser");
+  expect(e.getRole()).toBe(testValue);
+});
+
+test("Can get GitHub username via getGithub()", () => {
+  const testValue = "GitHubUser";
+  const e = new Engineer("Foo", 1, "test@test.com", testValue);
+  expect(e.getGithub()).toBe(testValue);
+});
