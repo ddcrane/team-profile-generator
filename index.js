@@ -46,8 +46,6 @@ const promptUser = () => {
       });
 };
 
-
-
 const managerQuestions = () => {
     return inquirer.prompt([
         {
@@ -163,7 +161,7 @@ function buildTeam() {
         choices: [
           "Engineer",
           "Intern",
-          "I don't want to add any more team members"
+          "I'm all done!"
         ]
       }
     ]).then(userChoice => {
@@ -181,23 +179,5 @@ function buildTeam() {
   }
 
 promptUser()
-// .then(prompts => {
-//     console.log(prompts);
-    
-//     if (prompts.type === 'Engineer') {
-//         return engineerQuestions();
-//     } 
-//     if (prompts.type === 'Intern') {
-//         return internQuestions();
-//     } 
-//     if (prompts.type === 'Manager') {
-//         return managerQuestions();
-//     } 
-// })
 
-
-
-// .then(employeeData => {
-//     return generatePage(employeeData);
-// })
 
